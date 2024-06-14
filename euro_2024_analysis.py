@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd 
 import numpy as np 
 import plotly.express as px
-import plotly.graph_objects as go
+# import plotly.graph_objects as go
 
 
 
@@ -49,10 +49,7 @@ st.line_chart(df.Club.value_counts(ascending = False)[:10])
 st.line_chart(df.Club.value_counts(ascending = True)[:10])
 
 feature_counts = df.PlayType.value_counts()
-# fig = px.pie(feature_counts, values=feature_counts.values, names=feature_counts.index, color_discrete_sequence=px.colors.sequential.RdBu)
-# fig.update_traces(textposition='inside', textinfo='percent+label')
-# fig.update_layout(uniformtext_minsize=12, uniformtext_mode='hide')
-fig = go.Figure(data=[go.Pie(labels=feature_counts.index, values=feature_counts.values, hole=.3, pull = [0.1, 0 ,0])])
+fig = px.pie(feature_counts, values=feature_counts.values, names=feature_counts.index, color_discrete_sequence=px.colors.sequential.RdBu)
 fig.update_traces(textposition='inside', textinfo='percent+label')
 fig.update_layout(uniformtext_minsize=12, uniformtext_mode='hide')
 st.plotly_chart(fig)
